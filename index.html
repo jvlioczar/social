@@ -1,0 +1,3411 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+<!-- Ícones principais --><!-- Apple (iOS) -->
+<link href="./images/icon_192.png" rel="apple-touch-icon"/>
+<!-- Preload opcional para o SVG se quiser -->
+<link as="image" href="./images/icon.svg" imagesizes="23px" rel="preload"/>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<meta content="#0e1117" name="theme-color"/>
+<meta content="yes" name="mobile-web-app-capable"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<title>BiblioVerse — A Biblioteca de Redes Sociais — Catálogo pesquisável dos melhores sites sociais por categoria</title>
+<!-- App icons -->
+<link href="images/icon.svg" rel="icon" type="image/svg+xml"/>
+<link href="images/icon_192.png" rel="icon" sizes="192x192" type="image/png"/>
+<link href="images/icon_512.png" rel="icon" sizes="512x512" type="image/png"/>
+<link href="images/icon_192.png" rel="apple-touch-icon"/>
+<meta content="#0e1117" name="theme-color"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<meta content="Catálogo pesquisável das melhores ferramentas de IA por categoria. O projeto é minimalista e conta com uma biblioteca essencial sobre IAs, ideal para colocar nos favoritos do seu navegador." name="description"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link as="style" href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" onload="this.rel='stylesheet'" rel="preload"/><noscript><link href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" rel="stylesheet"/></noscript>
+<link as="style" href="styles.css" onload="this.rel='stylesheet'" rel="preload"/><noscript><link href="styles.css" rel="stylesheet"/></noscript>
+<link href="./manifest.webmanifest" rel="manifest"/>
+</head>
+<body>
+<!-- Super-bar: 8 equal tabs across the full width -->
+<nav aria-label="Bibliotecas" class="superbar">
+<div class="superbar-toggle"><span class="superbar-title i18n-superbar-title">BiblioVerse - A Biblioteca de Tudo</span> <span aria-hidden="true" class="icon-burger"><i></i><i></i><i></i></span><span aria-hidden="true" class="icon-close">✕</span></div>
+<ul class="superbar-list">
+<li class="superbar-item"><a data-key="design" href="https://design.biblioverse.org">Design</a></li>
+<li class="superbar-item"><a data-key="games" href="https://games.biblioverse.org">Games</a></li>
+<li class="superbar-item"><a data-key="language" href="https://language.biblioverse.org">Idiomas</a></li>
+<li class="superbar-item"><a data-key="ai" href="https://ai.biblioverse.org">IA</a></li>
+<li class="superbar-item"><a data-key="music" href="https://music.biblioverse.org">Música</a></li>
+<li class="superbar-item"><a data-key="coding" href="https://code.biblioverse.org">Programação</a></li>
+<li class="superbar-item active"><a data-key="social" href="https://social.biblioverse.org">Redes Sociais</a></li>
+</ul>
+</nav>
+<aside aria-label="Categorias" class="sidepush" id="sidepush"><div class="sidepush-top"><button aria-label="Expandir menu" class="side-toggle" id="menuToggle" title="Expandir menu" type="button">▶</button></div><nav class="sidepush-scroll" id="sideScroll"><ul class="sidepush-menu" id="sideMenu"></ul></nav></aside><div class="push-wrap" id="pushWrap"><header class="site-header">
+<div class="header-inner container">
+<div class="brand-wrap">
+<h1 class="brand">
+<!-- Link apenas no ícone -->
+<a href="https://biblioverse.org" rel="noopener noreferrer" target="_blank">
+<img alt="Logo" class="brand-logo" fetchpriority="high" src="images/icon.svg" style="height:23px;width:23px;vertical-align:middle;margin-right:4px;"/>
+</a>
+<!-- Nome do site continua separado -->
+<a class="brand-link" href="#">
+<span class="brand-gradient i18n-brand">A Biblioteca de Redes Sociais</span>
+</a>
+<span class="beta-badge">
+      BETA
+    </span>
+</h1>
+<span class="byline">
+<span class="i18n-by">Idealizada por</span>
+<a class="bylink" href="https://instagram.com/jvlioczar" rel="noopener noreferrer" target="_blank">Julio Cesar Prava</a>
+<span class="i18n-and"></span>
+<a class="bylink" href="" rel="noopener noreferrer" target="_blank"></a>
+</span>
+</div>
+<div class="controls">
+<input autofocus="" class="mono" id="search" placeholder="Buscar por nome" type="search"/>
+<select class="mono" id="categoryFilter" title="Filtrar por categoria"></select>
+<div class="control-group">
+<button aria-label="Alternar tema" class="toggle" id="themeToggle" type="button">☀️</button>
+<button aria-label="Alternar idioma" class="toggle" id="langToggle" type="button">🇦🇺</button>
+<button aria-label="Informações" class="toggle info" id="infoBtn" type="button">ℹ️</button>
+<div aria-hidden="true" class="infotooltip" id="infoTip" role="tooltip"></div>
+</div>
+</div>
+</div>
+</header><div class="container">
+<div aria-live="polite" id="root"><div class="skeleton" id="skeleton"><div class="skeleton-title"></div><div class="skeleton-grid"><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div></div></div></div>
+<footer class="footer">
+<div class="footer-inner">
+<!-- Total vem primeiro -->
+<div class="footer-count">
+<span class="i18n-total">Total</span>: 
+      <span id="count">0</span>
+<span class="i18n-items">itens</span>
+<span class="sep">|</span>
+<span class="i18n-lastupdate">Última atualização: Setembro/2025</span>
+</div>
+<p class="footer-lead">
+<span class="i18n-footer-lead-pre">O projeto</span>
+<strong class="proj-name i18n-project-name">A Biblioteca de Redes Sociais</strong>
+<span class="i18n-footer-lead-post">foi idealizada por Julio Cesar Prava e construída com a ajuda de IA. O projeto reúne itens selecionados e revisados por curadores humanos.</span>
+</p>
+<p class="footer-note i18n-bookmarkShare">Salve esse projeto nos seus favoritos e compartilhe!</p>
+<p class="footer-nav"><span class="i18n-footernav">Acesse as bibliotecas de outros temas úteis no <strong class="bverse-strong">BiblioVerse</strong>.</span></p>
+<div class="footer-actions">
+<a class="btn linkedin mono" href="https://linkedin.com/in/juliocesarprava/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<button aria-label="Favoritar" class="btn star mono" id="favBtn" type="button">⭐</button>
+<button class="btn share mono" id="shareBtn" type="button"><span class="i18n-share">Compartilhar</span></button>
+<a class="btn bverse mono" href="https://biblioverse.org" rel="noopener noreferrer" target="_blank">BiblioVerse</a>
+</div>
+<p class="footer-thanks i18n-thanks">Obrigado pela visita!</p>
+</div>
+</footer>
+</div><script id="preloaded-data" type="application/json">[
+  {
+    "category": "Altruísmo e petições",
+    "name": "change.org",
+    "url": "https://change.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Altruísmo e petições",
+    "name": "DoSomething",
+    "url": "https://dosomething.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Altruísmo e petições",
+    "name": "Effictive Altruism",
+    "url": "https://forum.effectivealtruism.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Altruísmo e petições",
+    "name": "GiveWell",
+    "url": "https://givewell.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Altruísmo e petições",
+    "name": "GlobalGiving",
+    "url": "https://globalgiving.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Altruísmo e petições",
+    "name": "Idealist",
+    "url": "https://idealist.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Altruísmo e petições",
+    "name": "Kiva",
+    "url": "https://kiva.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arte e design",
+    "name": "ArtConnect",
+    "url": "https://artconnect.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arte e design",
+    "name": "ArtStation",
+    "url": "https://artstation.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Arte e design",
+    "name": "Behance",
+    "url": "https://behance.net/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Arte e design",
+    "name": "Carbonmade",
+    "url": "https://carbonmade.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arte e design",
+    "name": "DeviantArt",
+    "url": "https://deviantart.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Arte e design",
+    "name": "Dribbble",
+    "url": "https://dribbble.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Arte e design",
+    "name": "Pixiv",
+    "url": "https://pixiv.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Arte e design",
+    "name": "Society6",
+    "url": "https://society6.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Bate-papo da UOL",
+    "url": "https://batepapo.uol.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Bazoocam",
+    "url": "https://bazoocam.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "CamSurf",
+    "url": "https://camsurf.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Chatrandom",
+    "url": "https://chatrandom.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Chatroulette",
+    "url": "https://chatroulette.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Chitchat",
+    "url": "https://chitchat.gg/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "CooMeet",
+    "url": "https://coomeet.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Flingster",
+    "url": "https://flingster.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Omegle",
+    "url": "https://omegle.fun/",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Paltalk",
+    "url": "https://paltalk.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "Shagle",
+    "url": "https://shagle.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bate-papo",
+    "name": "TinyChat",
+    "url": "https://tinychat.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Blogger",
+    "url": "https://blogger.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Ghost",
+    "url": "https://ghost.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Jekyll",
+    "url": "https://jekyllrb.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "LiveJournal",
+    "url": "https://livejournal.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Longreads",
+    "url": "https://longreads.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Medium",
+    "url": "https://medium.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Squarespace",
+    "url": "https://squarespace.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Substack",
+    "url": "https://substack.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Tumblr",
+    "url": "https://tumblr.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Vocal Media",
+    "url": "https://vocal.media/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Wix",
+    "url": "https://wix.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "WordPress",
+    "url": "https://wordpress.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Blogs e escrita",
+    "name": "Write.as",
+    "url": "https://write.as/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bookmarking",
+    "name": "BibSonomy",
+    "url": "https://bibsonomy.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bookmarking",
+    "name": "Booky",
+    "url": "https://booky.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bookmarking",
+    "name": "Delicious",
+    "url": "https://en.wikipedia.org/wiki/Delicious_(website)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Bookmarking",
+    "name": "Diigo",
+    "url": "https://diigo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bookmarking",
+    "name": "Google Bookmarks",
+    "url": "https://en.wikipedia.org/wiki/Google_Bookmarks",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Bookmarking",
+    "name": "Pinboard",
+    "url": "https://pinboard.in/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Bookmarking",
+    "name": "Pinterest",
+    "url": "https://pinterest.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Bookmarking",
+    "name": "Pocket (Read It Later)",
+    "url": "https://en.wikipedia.org/wiki/Pocket_(service)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Bookmarking",
+    "name": "Raindrop.io",
+    "url": "https://raindrop.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Ask",
+    "url": "https://ask.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Baidu",
+    "url": "https://baidu.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Bing",
+    "url": "https://bing.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Brave Search",
+    "url": "https://search.brave.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "DuckDuckGo",
+    "url": "https://duckduckgo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Ecosia",
+    "url": "https://ecosia.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Google",
+    "url": "https://google.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Buscadores",
+    "name": "Mojeek",
+    "url": "https://mojeek.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Qwant",
+    "url": "https://qwant.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Startpage",
+    "url": "https://startpage.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Swisscows",
+    "url": "https://swisscows.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Yahoo Search",
+    "url": "https://search.yahoo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Buscadores",
+    "name": "Yandex",
+    "url": "https://yandex.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência e pesquisa",
+    "name": "Academia.edu",
+    "url": "https://academia.edu/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência e pesquisa",
+    "name": "Escavador",
+    "url": "https://escavador.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência e pesquisa",
+    "name": "Lattes",
+    "url": "https://lattes.cnpq.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência e pesquisa",
+    "name": "Mendeley",
+    "url": "https://mendeley.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Ciência e pesquisa",
+    "name": "ResearchGate",
+    "url": "https://researchgate.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Apoia.se",
+    "url": "https://apoia.se/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Buy Me a Coffee",
+    "url": "https://buymeacoffee.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Catarse",
+    "url": "https://catarse.me/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Crowd Supply",
+    "url": "https://crowdsupply.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "FanCentro",
+    "url": "https://fancentro.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Fansly",
+    "url": "https://fansly.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "FundRazr",
+    "url": "https://fundrazr.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "GoFundMe",
+    "url": "https://gofundme.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Gumroad",
+    "url": "https://gumroad.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Indiegogo",
+    "url": "https://indiegogo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Kickbooster",
+    "url": "https://kickbooster.me/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Kickstarter",
+    "url": "https://kickstarter.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Ko-fi",
+    "url": "https://ko-fi.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Liberapay",
+    "url": "https://liberapay.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Locals",
+    "url": "https://locals.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Memberful",
+    "url": "https://memberful.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "OnlyFans",
+    "url": "https://onlyfans.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Orelo",
+    "url": "https://orelo.cc/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Patreon",
+    "url": "https://patreon.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Pozible",
+    "url": "https://pozible.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Privacy",
+    "url": "https://privacy.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Skool",
+    "url": "https://skool.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Steady",
+    "url": "https://steadyhq.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Subscribestar",
+    "url": "https://subscribestar.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Tipeee",
+    "url": "https://tipeee.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Clubes de assinatura e Crowdfunding",
+    "name": "Ulule",
+    "url": "https://ulule.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "Food Network Reviews",
+    "url": "https://foodnetwork.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "Food52 Community",
+    "url": "https://food52.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "HappyCow",
+    "url": "https://happycow.net/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "Michelin Guide",
+    "url": "https://guide.michelin.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "OpenTable",
+    "url": "https://opentable.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "TasteAtlas",
+    "url": "https://tasteatlas.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "TheFork",
+    "url": "https://thefork.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "Tripadvisor Restaurants",
+    "url": "https://tripadvisor.com/Restaurants",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "Uber Eats",
+    "url": "https://ubereats.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Comida (avaliação)",
+    "name": "Zomato",
+    "url": "https://zomato.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Debate",
+    "name": "Argüman",
+    "url": "https://arguman.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Debate",
+    "name": "Debate.org",
+    "url": "https://debate.org/",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Debate",
+    "name": "Kialo",
+    "url": "https://kialo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "99Freelas",
+    "url": "https://99freelas.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Behance",
+    "url": "https://behance.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Catho",
+    "url": "https://catho.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Coroflot",
+    "url": "https://coroflot.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Fiverr",
+    "url": "https://fiverr.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Emprego",
+    "name": "Glassdoor",
+    "url": "https://glassdoor.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Emprego",
+    "name": "Indeed",
+    "url": "https://indeed.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "InfoJobs",
+    "url": "https://infojobs.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Jobcase",
+    "url": "https://jobcase.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "LinkedIn",
+    "url": "https://linkedin.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Emprego",
+    "name": "Marfin",
+    "url": "https://marfin.co/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Seek",
+    "url": "https://seek.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Shapr",
+    "url": "https://shapr.co/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Trampos",
+    "url": "https://trampos.co/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Upwork",
+    "url": "https://upwork.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Vagas",
+    "url": "https://vagas.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Wellfound (AngelList)",
+    "url": "https://wellfound.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Workana",
+    "url": "https://workana.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Emprego",
+    "name": "Xing",
+    "url": "https://xing.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Encontros e eventos",
+    "name": "Eventbrite",
+    "url": "https://eventbrite.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Encontros e eventos",
+    "name": "Facebook Events",
+    "url": "https://facebook.com/events/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Encontros e eventos",
+    "name": "Fever",
+    "url": "https://feverup.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Encontros e eventos",
+    "name": "Meetup",
+    "url": "https://meetup.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Endomondo",
+    "url": "https://en.wikipedia.org/wiki/Endomondo",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Fancred",
+    "url": "https://fancred.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Futeboxd",
+    "url": "https://futeboxd.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Futez",
+    "url": "https://futez.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Garmin Connect",
+    "url": "https://connect.garmin.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Nike Run Club",
+    "url": "https://nike.com/nrc-app",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Runkeeper",
+    "url": "https://runkeeper.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Runtastic (Adidas Running)",
+    "url": "https://runtastic.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Sportidia",
+    "url": "https://sportidia.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "SportsYapper",
+    "url": "https://sportsyapper.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Strava",
+    "url": "https://strava.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Esportes e atividades físicas",
+    "name": "Zwift",
+    "url": "https://zwift.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Agoda",
+    "url": "https://agoda.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Airbnb",
+    "url": "https://airbnb.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Booking.com",
+    "url": "https://booking.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Couchsurfing",
+    "url": "https://couchsurfing.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Expedia Reviews",
+    "url": "https://expedia.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Google Maps Reviews",
+    "url": "https://google.com/maps/contrib//reviews/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Hotels.com",
+    "url": "https://hotels.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Kayak",
+    "url": "https://kayak.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Lonely Planet",
+    "url": "https://lonelyplanet.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Tripadvisor",
+    "url": "https://tripadvisor.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "Trivago",
+    "url": "https://trivago.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Estadias e viagens (avaliação)",
+    "name": "VirtualTourist",
+    "url": "https://en.wikipedia.org/wiki/Virtualtourist",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Feed",
+    "name": "Feedly",
+    "url": "https://feedly.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Feed",
+    "name": "Google Reader",
+    "url": "https://en.wikipedia.org/wiki/Google_Reader",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Feed",
+    "name": "Inoreader",
+    "url": "https://inoreader.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Feed",
+    "name": "Netvibes",
+    "url": "https://en.wikipedia.org/wiki/Netvibes",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Feed",
+    "name": "The Old Reader",
+    "url": "https://theoldreader.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Bill Gates",
+    "url": "https://en.wikipedia.org/wiki/Bill_Gates",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Elon Musk",
+    "url": "https://en.wikipedia.org/wiki/Elon_Musk",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Evan Spiegel",
+    "url": "https://en.wikipedia.org/wiki/Evan_Spiegel",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Jack Dorsey",
+    "url": "https://en.wikipedia.org/wiki/Jack_Dorsey",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Jan Koum",
+    "url": "https://en.wikipedia.org/wiki/Jan_Koum",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Jeff Bezos",
+    "url": "https://en.wikipedia.org/wiki/Jeff_Bezos",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Kevin Systrom",
+    "url": "https://en.wikipedia.org/wiki/Kevin_Systrom",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Mark Zuckerberg",
+    "url": "https://en.wikipedia.org/wiki/Mark_Zuckerberg",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Reid Hoffman",
+    "url": "https://en.wikipedia.org/wiki/Reid_Hoffman",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Susan Wojcicki",
+    "url": "https://en.wikipedia.org/wiki/Susan_Wojcicki",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Tim Berners-Lee",
+    "url": "https://en.wikipedia.org/wiki/Tim_Berners-Lee",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Zhang Yiming",
+    "url": "https://en.wikipedia.org/wiki/Zhang_Yiming",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Figuras-chave",
+    "name": "Jimmy Wales",
+    "url": "https://en.wikipedia.org/wiki/Jimmy_Wales",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Filmes e séries (avaliação)",
+    "name": "CinemaScore",
+    "url": "https://cinemascore.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Filmes e séries (avaliação)",
+    "name": "FilmAffinity",
+    "url": "https://filmaffinity.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Filmes e séries (avaliação)",
+    "name": "IMDb",
+    "url": "https://imdb.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Filmes e séries (avaliação)",
+    "name": "Letterboxd",
+    "url": "https://letterboxd.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Filmes e séries (avaliação)",
+    "name": "Metacritic",
+    "url": "https://metacritic.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Filmes e séries (avaliação)",
+    "name": "Rotten Tomatoes",
+    "url": "https://rottentomatoes.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Filmes e séries (avaliação)",
+    "name": "Screen Rant Reviews",
+    "url": "https://screenrant.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Filmes e séries (avaliação)",
+    "name": "TMDb",
+    "url": "https://themoviedb.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fóruns",
+    "name": "4chan",
+    "url": "https://4chan.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fóruns",
+    "name": "Discourse",
+    "url": "https://discourse.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fóruns",
+    "name": "Lemmy",
+    "url": "https://join-lemmy.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fóruns",
+    "name": "NeoGAF",
+    "url": "https://neogaf.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fóruns",
+    "name": "Reddit",
+    "url": "https://reddit.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Fóruns",
+    "name": "Something Awful",
+    "url": "https://somethingawful.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fóruns",
+    "name": "Stack Exchange",
+    "url": "https://stackexchange.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fóruns",
+    "name": "Steemit",
+    "url": "https://steemit.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "1x",
+    "url": "https://1x.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "500px",
+    "url": "https://500px.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Fotografia",
+    "name": "Behance",
+    "url": "https://behance.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "BeReal.",
+    "url": "https://bereal.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "Flickr",
+    "url": "https://flickr.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Fotografia",
+    "name": "Fotolog",
+    "url": "https://en.wikipedia.org/wiki/Fotolog",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Fotografia",
+    "name": "GuruShots",
+    "url": "https://gurushots.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "Instagram",
+    "url": "https://instagram.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "Photobucket",
+    "url": "https://photobucket.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "Pixelfed",
+    "url": "https://pixelfed.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "SmugMug",
+    "url": "https://smugmug.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Fotografia",
+    "name": "VSCO",
+    "url": "https://vsco.co/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Games (avaliação)",
+    "name": "Metacritic Games",
+    "url": "https://metacritic.com/game/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Games (avaliação)",
+    "name": "OpenCritic",
+    "url": "https://opencritic.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Games (avaliação)",
+    "name": "GameFAQs",
+    "url": "https://gamefaqs.gamespot.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gaming",
+    "name": "Alvanista",
+    "url": "https://alvanista.com/",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Gaming",
+    "name": "Game Jolt",
+    "url": "https://gamejolt.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gaming",
+    "name": "Gameram",
+    "url": "https://gameram.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gaming",
+    "name": "GameTree",
+    "url": "https://gametree.me/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gaming",
+    "name": "Konect",
+    "url": "https://konect.gg/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gaming",
+    "name": "Liquipedia",
+    "url": "https://liquipedia.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gaming",
+    "name": "RankOne",
+    "url": "https://rankone.global/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gaming",
+    "name": "Steam",
+    "url": "https://store.steampowered.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Gaming",
+    "name": "Xbox Live",
+    "url": "https://xbox.com/en-GB/live",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "diaspora*",
+    "url": "https://diasporafoundation.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "Ello",
+    "url": "https://en.wikipedia.org/wiki/Ello_(social_network)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Gerais",
+    "name": "Facebook",
+    "url": "https://facebook.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Gerais",
+    "name": "Gojek",
+    "url": "https://gojek.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "Hi5",
+    "url": "https://hi5.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "MeWe",
+    "url": "https://mewe.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "Mixi",
+    "url": "https://mixi.jp/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "Orkut",
+    "url": "https://pt.wikipedia.org/wiki/Orkut",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Gerais",
+    "name": "Path",
+    "url": "https://en.wikipedia.org/wiki/Path_(social_network)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Gerais",
+    "name": "Trust Café (WT Social)",
+    "url": "https://trustcafe.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "Vero",
+    "url": "https://vero.co/site/social",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "VK",
+    "url": "https://vk.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Gerais",
+    "name": "WeChat (Weixin)",
+    "url": "https://wechat.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Gerais",
+    "name": "Whisper",
+    "url": "https://en.wikipedia.org/wiki/Whisper_(app)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Línguas",
+    "name": "Busuu",
+    "url": "https://busuu.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Línguas",
+    "name": "Duolingo",
+    "url": "https://duolingo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Línguas",
+    "name": "HelloTalk",
+    "url": "https://hellotalk.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Línguas",
+    "name": "italki",
+    "url": "https://italki.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Línguas",
+    "name": "Preply",
+    "url": "https://preply.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Línguas",
+    "name": "Speaky",
+    "url": "https://speaky.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Línguas",
+    "name": "Tandem",
+    "url": "https://tandem.net/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Literatura",
+    "name": "Archive of Our Own",
+    "url": "https://archiveofourown.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "BookBub",
+    "url": "https://bookbub.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "BookCrossing",
+    "url": "https://bookcrossing.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "FanFiction",
+    "url": "https://fanfiction.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "Goodreads",
+    "url": "https://goodreads.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Literatura",
+    "name": "Inkitt",
+    "url": "https://inkitt.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "LibraryThing",
+    "url": "https://librarything.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "Litsy",
+    "url": "https://litsy.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "Penana",
+    "url": "https://penana.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "Royal Road",
+    "url": "https://royalroad.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "Scribd",
+    "url": "https://scribd.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "Skoob",
+    "url": "https://skoob.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Literatura",
+    "name": "Wattpad",
+    "url": "https://wattpad.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Mais acessados",
+    "name": "Alexa",
+    "url": "https://en.wikipedia.org/wiki/Alexa_Internet",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Mais acessados",
+    "name": "Comscore",
+    "url": "https://comscore.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mais acessados",
+    "name": "Semrush",
+    "url": "https://semrush.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Mais acessados",
+    "name": "Similarweb",
+    "url": "https://similarweb.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Mais acessados",
+    "name": "Trends",
+    "url": "https://trends.google.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Alibaba",
+    "url": "https://alibaba.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "AliExpress",
+    "url": "https://aliexpress.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Amazon",
+    "url": "https://amazon.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "eBay",
+    "url": "https://ebay.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Enjoei",
+    "url": "https://enjoei.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Etsy",
+    "url": "https://etsy.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Facebook Marketplace",
+    "url": "https://facebook.com/marketplace/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Google Shopping",
+    "url": "https://google.com/shopping",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Mercado Livre",
+    "url": "https://mercadolivre.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Rakuten",
+    "url": "https://rakuten.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Shein",
+    "url": "https://au.shein.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Shopee",
+    "url": "https://shopee.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Marketplaces",
+    "name": "Temu",
+    "url": "https://temu.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "AIM",
+    "url": "https://en.wikipedia.org/wiki/AIM_(software)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Discord",
+    "url": "https://discord.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Facebook Messenger",
+    "url": "https://messenger.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Mensagens",
+    "name": "Google Messages",
+    "url": "https://messages.google.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "ICQ",
+    "url": "https://icq.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "iMessage",
+    "url": "https://support.apple.com/messages",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Kik",
+    "url": "https://kik.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Line",
+    "url": "https://line.me/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "MSN Messenger",
+    "url": "https://en.wikipedia.org/wiki/MSN_Messenger",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Paltalk",
+    "url": "https://paltalk.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "QQ",
+    "url": "https://qq.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Signal",
+    "url": "https://signal.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Skype",
+    "url": "https://en.wikipedia.org/wiki/Skype",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Slack",
+    "url": "https://slack.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Snapchat",
+    "url": "https://snapchat.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "Telegram",
+    "url": "https://telegram.org/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Mensagens",
+    "name": "Viber",
+    "url": "https://viber.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Mensagens",
+    "name": "WeChat (Weixin)",
+    "url": "https://wechat.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Mensagens",
+    "name": "WhatsApp",
+    "url": "https://whatsapp.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Mensagens",
+    "name": "Yahoo! Messenger",
+    "url": "https://en.wikipedia.org/wiki/Yahoo_Messenger",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Microblogging",
+    "name": "Bluesky",
+    "url": "https://bsky.app/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Microblogging",
+    "name": "Gab",
+    "url": "https://gab.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Microblogging",
+    "name": "Gettr",
+    "url": "https://gettr.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Microblogging",
+    "name": "Mastodon",
+    "url": "https://mastodon.social/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Microblogging",
+    "name": "Plurk",
+    "url": "https://plurk.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Microblogging",
+    "name": "Spoutible",
+    "url": "https://spoutible.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Microblogging",
+    "name": "Threads",
+    "url": "https://threads.net/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Microblogging",
+    "name": "Truth Social",
+    "url": "https://truthsocial.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Microblogging",
+    "name": "Weibo",
+    "url": "https://m.weibo.cn/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Microblogging",
+    "name": "X (Twitter)",
+    "url": "https://twitter.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Música",
+    "name": "Anghami",
+    "url": "https://anghami.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Apple Music",
+    "url": "https://music.apple.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Audiomack",
+    "url": "https://audiomack.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Audius",
+    "url": "https://audius.co/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Bandcamp",
+    "url": "https://bandcamp.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Música",
+    "name": "BandLab",
+    "url": "https://bandlab.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Deezer",
+    "url": "https://deezer.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Jamendo",
+    "url": "https://jamendo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "JioSaavn",
+    "url": "https://jiosaavn.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Last.fm",
+    "url": "https://last.fm/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Música",
+    "name": "Mixcloud",
+    "url": "https://mixcloud.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "MySpace",
+    "url": "https://myspace.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Pandora",
+    "url": "https://pandora.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "SoundCloud",
+    "url": "https://soundcloud.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Música",
+    "name": "Spotify",
+    "url": "https://spotify.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Música",
+    "name": "Tidal",
+    "url": "https://tidal.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "Vero Music",
+    "url": "https://vero-music.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música",
+    "name": "YouTube Music",
+    "url": "https://music.youtube.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Música",
+    "name": "Gaana",
+    "url": "https://gaana.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música (avaliação)",
+    "name": "AllMusic",
+    "url": "https://allmusic.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música (avaliação)",
+    "name": "Discogs",
+    "url": "https://discogs.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música (avaliação)",
+    "name": "Metacritic Music",
+    "url": "https://metacritic.com/music",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Música (avaliação)",
+    "name": "MusicBrainz",
+    "url": "https://musicbrainz.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Música (avaliação)",
+    "name": "RateYourMusic",
+    "url": "https://rateyourmusic.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Google Chrome",
+    "url": "https://google.com/chrome/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Mozilla Firefox",
+    "url": "https://mozilla.org/firefox/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Microsoft Edge",
+    "url": "https://microsoft.com/edge",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Apple Safari",
+    "url": "https://apple.com/safari/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Opera",
+    "url": "https://opera.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Brave",
+    "url": "https://brave.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Vivaldi",
+    "url": "https://vivaldi.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Tor Browser",
+    "url": "https://torproject.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Internet Explorer",
+    "url": "https://en.wikipedia.org/wiki/Internet_Explorer",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Netscape Navigator",
+    "url": "https://en.wikipedia.org/wiki/Netscape_Navigator",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Safari (Windows version)",
+    "url": "https://en.wikipedia.org/wiki/Safari_(web_browser)#Windows_version",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Konqueror",
+    "url": "https://en.wikipedia.org/wiki/Konqueror",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "SeaMonkey",
+    "url": "https://en.wikipedia.org/wiki/SeaMonkey",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Midori",
+    "url": "https://en.wikipedia.org/wiki/Midori_(web_browser)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Camino",
+    "url": "https://en.wikipedia.org/wiki/Camino_(web_browser)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Flock",
+    "url": "https://en.wikipedia.org/wiki/Flock_(web_browser)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Maxthon",
+    "url": "https://en.wikipedia.org/wiki/Maxthon",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "UC Browser",
+    "url": "https://en.wikipedia.org/wiki/UC_Browser",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Yandex Browser",
+    "url": "https://en.wikipedia.org/wiki/Yandex_Browser",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Pale Moon",
+    "url": "https://en.wikipedia.org/wiki/Pale_Moon_(web_browser)",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Better Business Bureau",
+    "url": "https://bbb.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Capterra",
+    "url": "https://capterra.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Clutch",
+    "url": "https://clutch.co/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Consumer Affairs",
+    "url": "https://consumeraffairs.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "G2",
+    "url": "https://g2.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Glassdoor",
+    "url": "https://glassdoor.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Google Business",
+    "url": "https://business.google.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Indeed Company Reviews",
+    "url": "https://indeed.com/companies",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Reclame Aqui",
+    "url": "https://reclameaqui.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "ResellerRatings",
+    "url": "https://resellerratings.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Sitejabber",
+    "url": "https://sitejabber.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Trustpilot",
+    "url": "https://trustpilot.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "TrustRadius",
+    "url": "https://trustradius.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Negócios (avaliação)",
+    "name": "Yelp",
+    "url": "https://yelp.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas",
+    "name": "Answers",
+    "url": "https://answers.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas",
+    "name": "Ask Metafilter",
+    "url": "https://ask.metafilter.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas",
+    "name": "Blurtit",
+    "url": "https://blurtit.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas",
+    "name": "Fluther",
+    "url": "https://fluther.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas",
+    "name": "Quora",
+    "url": "https://quora.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Perguntas",
+    "name": "Stack Exchange",
+    "url": "https://stackexchange.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas",
+    "name": "Yahoo! Answers",
+    "url": "https://en.wikipedia.org/wiki/Yahoo_Answers",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas pessoais",
+    "name": "ASKfm",
+    "url": "https://ask.fm/",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Perguntas pessoais",
+    "name": "CuriousCat",
+    "url": "https://fanlore.org/wiki/CuriousCat",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Perguntas pessoais",
+    "name": "NGL",
+    "url": "https://ngl.link/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Perguntas pessoais",
+    "name": "Sarahah",
+    "url": "https://sarahah.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas pessoais",
+    "name": "Spring.me (Formspring)",
+    "url": "https://en.wikipedia.org/wiki/Formspring",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Perguntas pessoais",
+    "name": "Tellonym",
+    "url": "https://tellonym.me/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Perguntas pessoais",
+    "name": "Yik Yak",
+    "url": "https://yikyak.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Profissional",
+    "name": "Goodwall",
+    "url": "https://goodwall.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Profissional",
+    "name": "LinkedIn",
+    "url": "https://linkedin.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Profissional",
+    "name": "Lunchclub",
+    "url": "https://lunchclub.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Profissional",
+    "name": "Pozi",
+    "url": "https://pozi.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Rankings e listas",
+    "name": "List Challenges",
+    "url": "https://listchallenges.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Rankings e listas",
+    "name": "Listography",
+    "url": "https://listography.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Rankings e listas",
+    "name": "Ranker",
+    "url": "https://ranker.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Rankings e listas",
+    "name": "Ranx",
+    "url": "https://ranx.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Rankings e listas",
+    "name": "TierMaker",
+    "url": "https://tiermaker.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Badoo",
+    "url": "https://badoo.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Bumble",
+    "url": "https://bumble.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Coffee Meets Bagel",
+    "url": "https://ww.coffeemeetsbagel.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "eHarmony",
+    "url": "https://eharmony.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Facebook Dating",
+    "url": "https://facebook.com/dating",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Feeld",
+    "url": "https://feeld.co/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Grindr",
+    "url": "https://grindr.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Happn",
+    "url": "https://happn.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Her",
+    "url": "https://weareher.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Hinge",
+    "url": "https://hinge.co/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Relacionamento",
+    "name": "OkCupid",
+    "url": "https://okcupid.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Tinder",
+    "url": "https://tinder.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Relacionamento",
+    "name": "Veggly",
+    "url": "https://veggly.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Bigo Live",
+    "url": "https://bigo.tv/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Chingari",
+    "url": "https://chingari.io/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "DLive",
+    "url": "https://dlive.tv/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Facebook Gaming",
+    "url": "https://facebook.com/gaming/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Instagram Live",
+    "url": "https://instagram.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Kick",
+    "url": "https://kick.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Mixer",
+    "url": "https://en.wikipedia.org/wiki/Mixer_(service)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Streaming",
+    "name": "Nimo TV",
+    "url": "https://nimo.tv/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Peertube Live",
+    "url": "https://joinpeertube.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Periscope",
+    "url": "https://en.wikipedia.org/wiki/Periscope_(service)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Streaming",
+    "name": "TikTok Live",
+    "url": "https://tiktok.com/live",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Trovo",
+    "url": "https://trovo.live/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "Twitch",
+    "url": "https://twitch.tv/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Streaming",
+    "name": "Vimeo Livestream",
+    "url": "https://livestream.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "YouNow",
+    "url": "https://younow.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Streaming",
+    "name": "YouTube Live",
+    "url": "https://youtube.com/live",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Algorithmic curation",
+    "url": "https://en.wikipedia.org/wiki/Algorithmic_curation",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Algorithmic radicalization",
+    "url": "https://en.wikipedia.org/wiki/Algorithmic_radicalization",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Social media bias",
+    "url": "https://en.wikipedia.org/wiki/Media_bias#Social_media_bias",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Hashtag",
+    "url": "https://en.wikipedia.org/wiki/Hashtag",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Influencer",
+    "url": "https://en.wikipedia.org/wiki/Influencer",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Viral marketing",
+    "url": "https://en.wikipedia.org/wiki/Viral_marketing",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Meme",
+    "url": "https://en.wikipedia.org/wiki/Internet_meme",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Clickbait",
+    "url": "https://en.wikipedia.org/wiki/Clickbait",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Termos essenciais",
+    "name": "Social media",
+    "url": "https://en.wikipedia.org/wiki/Social_media",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Viagem",
+    "name": "Booking.com",
+    "url": "https://booking.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Viagem",
+    "name": "Couchsurfing",
+    "url": "https://couchsurfing.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Viagem",
+    "name": "Rome2Rio",
+    "url": "https://rome2rio.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Viagem",
+    "name": "TripIt",
+    "url": "https://tripit.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Viagem",
+    "name": "Trusted Housesitters",
+    "url": "https://trustedhousesitters.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Viagem",
+    "name": "Warmshowers",
+    "url": "https://warmshowers.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Viagem",
+    "name": "Wikivoyage",
+    "url": "https://wikivoyage.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "Discord",
+    "url": "https://discord.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "FaceTime",
+    "url": "https://apps.apple.com/us/app/facetime/id1110145091",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "Google Meet",
+    "url": "https://meet.google.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "Jitsi Meet",
+    "url": "https://meet.jit.si/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "Signal",
+    "url": "https://signal.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "Skype",
+    "url": "https://en.wikipedia.org/wiki/Skype",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "Teams",
+    "url": "https://teams.live.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "WhatsApp",
+    "url": "https://whatsapp.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeochamada",
+    "name": "Zoom",
+    "url": "https://zoom.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "Douyin",
+    "url": "https://douyin.com/?recommend=1",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "Dubsmash",
+    "url": "https://en.wikipedia.org/wiki/Dubsmash",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "Instagram (Reels)",
+    "url": "https://instagram.com/reels/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "Kwai",
+    "url": "https://kwai.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "Moj",
+    "url": "https://mojapp.in/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "Sharechat",
+    "url": "https://sharechat.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "TikTok",
+    "url": "https://tiktok.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "Vine",
+    "url": "https://en.wikipedia.org/wiki/Vine_(service)",
+    "description": "",
+    "tags": [],
+    "ended": true
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "Xiaohongshu (Little Red Book)",
+    "url": "https://xiaohongshu.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo curto",
+    "name": "YouTube (Shorts)",
+    "url": "https://youtube.com/shorts/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "Bilibili",
+    "url": "https://bilibili.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "Dailymotion",
+    "url": "https://dailymotion.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "Facebook Watch",
+    "url": "https://facebook.com/watch",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "Odysee",
+    "url": "https://odysee.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "PeerTube",
+    "url": "https://joinpeertube.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "Rumble",
+    "url": "https://rumble.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "Veoh",
+    "url": "https://veoh.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "Vimeo",
+    "url": "https://vimeo.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Vídeo longo",
+    "name": "YouTube",
+    "url": "https://youtube.com/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Wikis",
+    "name": "Baidu Baike",
+    "url": "https://baike.baidu.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Wikis",
+    "name": "Citizendium",
+    "url": "https://citizendium.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Wikis",
+    "name": "Fandom (Wikia)",
+    "url": "https://fandom.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Wikis",
+    "name": "Fanlore",
+    "url": "https://fanlore.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Wikis",
+    "name": "Liquipedia",
+    "url": "https://liquipedia.net/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Wikis",
+    "name": "RationalWiki",
+    "url": "https://rationalwiki.org/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  },
+  {
+    "category": "Wikis",
+    "name": "Scholarpedia",
+    "url": "https://scholarpedia.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Wikis",
+    "name": "WikiHow",
+    "url": "https://wikihow.com/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Wikis",
+    "name": "Wikipedia",
+    "url": "https://wikipedia.org/",
+    "description": "",
+    "tags": [],
+    "featured": true
+  }
+]</script><script>window.DEFAULT_CATEGORY="__ALL__";</script><script defer="" src="script.js"></script></div>
+<!-- PWA Install Button -->
+<button class="pwa-install" hidden="" id="btnInstall">Instalar app</button>
+<script defer="defer" src="./sw-register.js"></script>
+</body>
+</html>
