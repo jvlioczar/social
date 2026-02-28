@@ -295,7 +295,7 @@ const SUPERBAR_I18N = {
   }
 };
 
-function getLang(){ try{ return localStorage.getItem('libia-lang') || 'pt'; }catch(e){ return 'pt'; } }
+function getLang(){ try{ const saved=localStorage.getItem('libia-lang'); if(saved) return saved; const bl=(navigator.language||'pt').toLowerCase(); return bl.startsWith('en')?'en':'pt'; }catch(e){ return 'pt'; } }
 function setLang(lang){
   const dict = I18N[lang] || I18N.pt;
   try{ localStorage.setItem('libia-lang', lang); }catch(e){}
