@@ -99,6 +99,7 @@ const CAT_I18N = {
   "Vídeochamada": "Video Call",
   "Vídeo curto": "Short-form Video",
   "Vídeo longo": "Long-form Video",
+  "Agregador de Links": "Links In Bio",
   "Wikis": "Wikis"
 };
 
@@ -149,6 +150,7 @@ const CAT_ICON = {
   "Vídeochamada": "📞",
   "Vídeo curto": "⏩",
   "Vídeo longo": "▶️",
+  "Agregador de Links": "🔗",
   "Wikis": "📖"
 };
 
