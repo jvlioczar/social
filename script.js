@@ -1,25 +1,3 @@
-// === Superbar <-> Sidebar width sync ===
-(function(){
-  try{
-    const root = document.documentElement;
-    const side = document.querySelector('.sidepush, #sidepush, .sidebar, #sidebar');
-    const setW = () => {
-      const w = side ? side.offsetWidth : 0;
-      root.style.setProperty('--sidepush-w', w + 'px');
-    };
-    setW();
-    // Track live changes (collapse/expand)
-    if (window.ResizeObserver){
-      const ro = new ResizeObserver(setW);
-      if (side) ro.observe(side);
-      window.addEventListener('resize', setW, {passive:true});
-    }else{
-      window.addEventListener('resize', setW, {passive:true});
-    }
-  }catch(e){
-    // fail silently; layout still works with full width
-  }
-})();
 
 
 // Helper: update arrow direction and labels
@@ -231,7 +209,6 @@ function compareCats(a,b){
 const I18N = {
   pt: {
     brand:"A Biblioteca de Redes Sociais",
-    by:"por",
     search:"Buscar por nome",
     allCats:"Todas as categorias",
     visit:"Acesse",
@@ -243,17 +220,16 @@ const I18N = {
     footerLeadPost:"foi idealizada por Julio Cesar Prava e construída com a ajuda de IA. O projeto reúne itens selecionados e revisados por curadores humanos.",
     bookmarkShare:"Salve esse projeto nos seus favoritos e compartilhe!",
     thanks:"Obrigado pela visita!",
-    lastUpdate:"Última atualização: Setembro/2025",
+    lastUpdate:"Última atualização: Outubro/2026",
     footernav:"Acesse as bibliotecas de outros temas úteis no <strong class=\"bverse-strong\">BiblioVerse</strong>.",
     share:"Compartilhar",
     copied:"Link copiado!",
     favHelp:"Use Ctrl+D (Windows) ou Cmd+D (Mac) para favoritar esta página.",
     kbdTitle:
-"Atalhos de teclado\n/ – Ativa a barra de busca\nT – Alterna cor do tema\nL – Alterna idioma\n\n★ – Destaque"
+"Atalhos de teclado\n/ – Ativa a barra de busca\nT – Alterna cor do tema\nL – Alterna idioma\nB – Abre o menu do BiblioVerse\n\n★ – Destaque\n🪦 – Encerrado"
   },
   en: {
     brand:"The Social Media Library",
-    by:"by",
     search:"Search by name",
     allCats:"All categories",
     visit:"Visit",
@@ -265,35 +241,13 @@ const I18N = {
     footerLeadPost:"was conceived by Julio Cesar Prava and built with the help of AI. The project showcases items selected and reviewed by human curators.",
     bookmarkShare:"Bookmark this project and share it!",
     thanks:"Thanks for visiting!",
-    lastUpdate:"Last update: September/2025",
+    lastUpdate:"Last update: October/2026",
     footernav:"Access libraries on other useful topics at <strong class=\"bverse-strong\">BiblioVerse</strong>.",
     share:"Share",
     copied:"Link copied!",
     favHelp:"Use Ctrl+D (Windows) or Cmd+D (Mac) to bookmark this page.",
     kbdTitle:
-"Keyboard shortcuts\n/ – Focus the search bar\nT – Toggle theme color\nL – Toggle language\n\n★ – Featured"
-  }
-};
-
-// Labels for the top superbar items
-const SUPERBAR_I18N = {
-  pt: {
-    design: "Design",
-    games: "Games",
-    language: "Idiomas",
-    ai: "IA",
-    music: "Música",
-    coding: "Programação",
-    social: "Redes Sociais"
-  },
-  en: {
-    design: "Design",
-    games: "Games",
-    language: "Language",
-    ai: "AI",
-    music: "Music",
-    coding: "Coding",
-    social: "Social"
+"Keyboard shortcuts\n/ – Focus the search bar\nT – Toggle theme color\nL – Toggle language\nB – Open the BiblioVerse menu\n\n★ – Featured\n🪦 – Ended"
   }
 };
 
@@ -308,7 +262,6 @@ function setLang(lang){
   // visit buttons removed; no-op
   const totalEl = document.querySelector('.i18n-total'); if(totalEl) totalEl.textContent = dict.total;
   const itemsEl = document.querySelector('.i18n-items'); if(itemsEl) itemsEl.textContent = dict.items;
-  const byEl = document.querySelector('.i18n-by'); if(byEl) byEl.textContent = dict.by;
 
   const leadPre = document.querySelector('.i18n-footer-lead-pre'); if(leadPre) leadPre.textContent = dict.footerLeadPre;
   const proj = document.querySelector('.i18n-project-name'); if(proj) proj.textContent = dict.projectName;
@@ -323,7 +276,7 @@ function setLang(lang){
 
   const tip = document.getElementById('infoTip'); if(tip) tip.textContent = dict.kbdTitle;
 
-  document.documentElement.setAttribute('lang', lang==='en' ? 'en' : 'pt-br');
+  document.documentElement.setAttribute('lang', lang==='en' ? 'en' : 'pt-BR');
   const langBtn=document.getElementById('langToggle'); if(langBtn){ langBtn.textContent = (lang==='en' ? '🇧🇷' : '🇦🇺'); }
 
   // Localize tooltips / aria-labels for toggle buttons and select title
@@ -335,26 +288,6 @@ function setLang(lang){
   if(infoBtn2){ infoBtn2.setAttribute('aria-label', lang==='en' ? 'Information' : 'Informações'); }
   const catSel2 = document.getElementById('categoryFilter');
   if(catSel2){ catSel2.setAttribute('title', lang==='en' ? 'Filter by category' : 'Filtrar por categoria'); }
-
-// Update superbar labels
-  try{
-    const labels = SUPERBAR_I18N[lang] || SUPERBAR_I18N.pt;
-    document.querySelectorAll('.superbar-list [data-key]').forEach(function(a){
-      const key = a.getAttribute('data-key');
-      if (key && labels[key]) { a.textContent = labels[key]; }
-    });
-  }catch(e){}
-
-
-// Localize superbar mobile toggle title
-try{
-  var st = document.querySelector('.superbar .superbar-toggle .i18n-superbar-title');
-  if(st){
-    st.textContent = (lang==='en')
-      ? 'BiblioVerse - The Library of Everything'
-      : 'BiblioVerse - A Biblioteca de Tudo';
-  }
-}catch(e){}
 
 }
 
@@ -479,13 +412,16 @@ function createCard(item){
     }catch(e){ /* noop */ }
   });
 
-  const m = parsed.item.match(/^(.*?)(\s*\(.*\)\s*)$/);
-  if(m){
-    title.appendChild(document.createTextNode(' '+m[1].trim()));
-    const par=document.createElement('span'); par.className='paren'; par.textContent=m[2]; title.appendChild(par);
+  // Name; a trailing "(...)" goes to its own line so long names don't get truncated
+  const nameEl = document.createElement('span'); nameEl.className='name';
+  const m = parsed.item.match(/^(.*?)\s*(\(.*\))\s*$/);
+  if(m && m[1]){
+    nameEl.appendChild(document.createTextNode(m[1].trim()));
+    const par=document.createElement('span'); par.className='paren'; par.textContent=m[2]; nameEl.appendChild(par);
   }else{
-    title.appendChild(document.createTextNode(' '+parsed.item));
+    nameEl.textContent = parsed.item;
   }
+  title.appendChild(nameEl);
   if(isFeatured(item)){
     var star=document.createElement('span');
     star.className='featured-star';
@@ -507,11 +443,12 @@ function createCard(item){
   /* align badges right */
   (function(){
     try{
-      var starEl = title.querySelector('.featured-star');
+      var starEl = title.querySelector('.featured-star:not(.ended-badge)');
       var endedEl = title.querySelector('.ended-badge');
       if(endedEl){
         if(starEl){
-          endedEl.style.right = '0px'; // move left when star is present
+          endedEl.style.right = '0px';
+          starEl.style.right = '30px'; // star sits left of the tombstone when both are present
           // increase padding-right to avoid text under badges
           title.style.paddingRight = '56px';
         }else{
@@ -651,7 +588,8 @@ function showToast(msg){
 
 function getHeaderOffset(){
   const h=document.querySelector('.site-header');
-  return (h ? h.offsetHeight : 0) + 12; // small breathing space
+  const bar=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--bvbar-h'))||44;
+  return bar + (h ? h.offsetHeight : 0) + 12; // fixed BiblioVerse bar + sticky header + breathing space
 }
 function smoothScrollToId(id){
   const el=document.getElementById(id);
@@ -791,7 +729,9 @@ function setupInfo(){
   const langBtn = document.getElementById('langToggle');
   if(langBtn){
     langBtn.textContent = (getLang()==='en' ? '🇧🇷' : '🇦🇺');
-    langBtn.addEventListener('click', ()=>{
+    langBtn.addEventListener('click', ()=> switchLang());
+  }
+  function switchLang(){
       const next = (getLang()==='en') ? 'pt' : 'en';
       setLang(next);
       // rebuild categories/select with language-specific slugs
@@ -806,8 +746,6 @@ function setupInfo(){
       scrollSidebarToId('all');
       var sideScroll = document.getElementById('sideScroll');
       if (sideScroll) { try { sideScroll.scrollTo({ top: 0, behavior: 'auto' }); } catch(e) { sideScroll.scrollTop = 0; } }
-
-    });
   }
 
   
@@ -833,10 +771,11 @@ function setupInfo(){
   setupInfo();
 
   document.addEventListener('keydown',(e)=>{
-    const inField = e.target.matches('input,textarea,[contenteditable="true"]');
+    if(e.ctrlKey || e.metaKey || e.altKey) return; // leave browser shortcuts (Ctrl+L, Ctrl+T...) alone
+    const inField = e.target.matches('input,textarea,select,[contenteditable="true"]');
     if(e.key==='/'&&!inField){ e.preventDefault(); document.querySelector('#search').focus(); }
     if(!inField && e.key && e.key.toLowerCase()==='t'){ e.preventDefault(); const html=document.documentElement; const now=html.getAttribute('data-theme')==='light'?'dark':'light'; setTheme(now); }
-    if(!inField && e.key && e.key.toLowerCase()==='l'){ e.preventDefault(); const next=(getLang()==='en')?'pt':'en'; setLang(next); const cats3=groupBy(data,'category'); populateSelect(cats3); document.getElementById('categoryFilter').value = document.getElementById('categoryFilter').value || defaultCat; applyFilters(data); }
+    if(!inField && e.key && e.key.toLowerCase()==='l'){ e.preventDefault(); switchLang(); }
   });
 })();
 
@@ -1314,50 +1253,6 @@ if (typeof updateMenuToggleUi === 'function') {
       scrollToTopAfterRender();
     }, { passive: true });
 
-  });
-})();
-
-
-// Superbar mobile toggle
-document.addEventListener('DOMContentLoaded', function(){
-  const superbar = document.querySelector('.superbar');
-  const toggle = document.querySelector('.superbar-toggle');
-  if(toggle){
-    toggle.addEventListener('click', () => {
-      superbar.classList.toggle('open');
-    });
-  }
-});
-
-
-// ===== Superbar compact toggle & current label =====
-(function(){
-  const nav = document.querySelector('.superbar');
-  if(!nav) return;
-  const toggle = nav.querySelector('.superbar-toggle');
-  const list = nav.querySelector('.superbar-list');
-  const current = nav.querySelector('.superbar-current');
-
-  // Set current label from active item
-  const active = list.querySelector('.superbar-item.active a') || list.querySelector('.superbar-item a');
-  if (active && current) current.textContent = active.textContent.trim();
-
-  if (toggle){
-    toggle.addEventListener('click', () => {
-      const open = nav.classList.toggle('is-open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  }
-
-  // Close on link click (small screens)
-  list.addEventListener('click', (ev) => {
-    const a = ev.target.closest('a');
-    if(!a) return;
-    if (window.matchMedia('(max-width: 720px)').matches){
-      nav.classList.remove('is-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      if (current) current.textContent = a.textContent.trim();
-    }
   });
 })();
 

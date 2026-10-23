@@ -1,45 +1,29 @@
 <!DOCTYPE html>
-
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-<!-- Ícones principais --><!-- Apple (iOS) -->
-<link href="./images/icon_192.png" rel="apple-touch-icon"/>
-<!-- Preload opcional para o SVG se quiser -->
-<link as="image" href="./images/icon.svg" imagesizes="23px" rel="preload"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>BiblioVerse — A Biblioteca de Redes Sociais — Catálogo pesquisável dos melhores sites sociais por categoria</title>
+<meta content="Catálogo pesquisável das melhores ferramentas de IA por categoria. O projeto é minimalista e conta com uma biblioteca essencial sobre IAs, ideal para colocar nos favoritos do seu navegador." name="description"/>
+<link href="https://social.biblioverse.org/" rel="canonical"/>
 <meta content="#0e1117" name="theme-color"/>
 <meta content="yes" name="mobile-web-app-capable"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
-<title>BiblioVerse — A Biblioteca de Redes Sociais — Catálogo pesquisável dos melhores sites sociais por categoria</title>
 <!-- App icons -->
 <link href="images/icon.svg" rel="icon" type="image/svg+xml"/>
 <link href="images/icon_192.png" rel="icon" sizes="192x192" type="image/png"/>
 <link href="images/icon_512.png" rel="icon" sizes="512x512" type="image/png"/>
 <link href="images/icon_192.png" rel="apple-touch-icon"/>
-<meta content="#0e1117" name="theme-color"/>
 <link href="manifest.webmanifest" rel="manifest"/>
-<meta content="Catálogo pesquisável das melhores ferramentas de IA por categoria. O projeto é minimalista e conta com uma biblioteca essencial sobre IAs, ideal para colocar nos favoritos do seu navegador." name="description"/>
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
 <link crossorigin="anonymous" href="https://fonts.gstatic.com" rel="preconnect"/>
 <link as="style" href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" onload="this.rel='stylesheet'" rel="preload"/><noscript><link href="https://fonts.googleapis.com/css2?family=TASA+Explorer:wght@400;700&amp;display=swap" rel="stylesheet"/></noscript>
 <link as="style" href="styles.css" onload="this.rel='stylesheet'" rel="preload"/><noscript><link href="styles.css" rel="stylesheet"/></noscript>
-<link href="./manifest.webmanifest" rel="manifest"/>
+<script src="https://biblioverse.org/superbar.js" defer></script>
 </head>
 <body>
-<!-- Super-bar: 8 equal tabs across the full width -->
-<nav aria-label="Bibliotecas" class="superbar">
-<div class="superbar-toggle"><span class="superbar-title i18n-superbar-title">BiblioVerse - A Biblioteca de Tudo</span> <span aria-hidden="true" class="icon-burger"><i></i><i></i><i></i></span><span aria-hidden="true" class="icon-close">✕</span></div>
-<ul class="superbar-list">
-<li class="superbar-item"><a data-key="design" href="https://design.biblioverse.org">Design</a></li>
-<li class="superbar-item"><a data-key="games" href="https://games.biblioverse.org">Games</a></li>
-<li class="superbar-item"><a data-key="language" href="https://language.biblioverse.org">Idiomas</a></li>
-<li class="superbar-item"><a data-key="ai" href="https://ai.biblioverse.org">IA</a></li>
-<li class="superbar-item"><a data-key="music" href="https://music.biblioverse.org">Música</a></li>
-<li class="superbar-item"><a data-key="coding" href="https://code.biblioverse.org">Programação</a></li>
-<li class="superbar-item active"><a data-key="social" href="https://social.biblioverse.org">Redes Sociais</a></li>
-</ul>
-</nav>
+<!-- BiblioVerse Superbar -->
+<nav id="bvbar" class="bvbar" data-current="social" aria-label="BiblioVerse" style="position:fixed;top:0;left:0;right:0;height:44px;z-index:9000;background:linear-gradient(90deg,#4f7cff,#7a5cff)"><a href="https://biblioverse.org" style="color:#fff;line-height:44px;padding:0 14px;font-weight:700;text-decoration:none;font-family:sans-serif">BiblioVerse</a></nav>
 <aside aria-label="Categorias" class="sidepush" id="sidepush"><div class="sidepush-top"><button aria-label="Expandir menu" class="side-toggle" id="menuToggle" title="Expandir menu" type="button">▶</button></div><nav class="sidepush-scroll" id="sideScroll"><ul class="sidepush-menu" id="sideMenu"></ul></nav></aside><div class="push-wrap" id="pushWrap"><header class="site-header">
 <div class="header-inner container">
 <div class="brand-wrap">
@@ -56,15 +40,9 @@
       BETA
     </span>
 </h1>
-<span class="byline">
-<span class="i18n-by">Idealizada por</span>
-<a class="bylink" href="https://instagram.com/jvlioczar" rel="noopener noreferrer" target="_blank">Julio Cesar Prava</a>
-<span class="i18n-and"></span>
-<a class="bylink" href="" rel="noopener noreferrer" target="_blank"></a>
-</span>
 </div>
 <div class="controls">
-<input autofocus="" class="mono" id="search" placeholder="Buscar por nome" type="search"/>
+<input class="mono" id="search" placeholder="Buscar por nome" type="search"/>
 <select class="mono" id="categoryFilter" title="Filtrar por categoria"></select>
 <div class="control-group">
 <button aria-label="Alternar tema" class="toggle" id="themeToggle" type="button">☀️</button>
@@ -84,7 +62,7 @@
       <span id="count">0</span>
 <span class="i18n-items">itens</span>
 <span class="sep">|</span>
-<span class="i18n-lastupdate">Última atualização: Setembro/2025</span>
+<span class="i18n-lastupdate">Última atualização: Outubro/2026</span>
 </div>
 <p class="footer-lead">
 <span class="i18n-footer-lead-pre">O projeto</span>
@@ -94,7 +72,7 @@
 <p class="footer-note i18n-bookmarkShare">Salve esse projeto nos seus favoritos e compartilhe!</p>
 <p class="footer-nav"><span class="i18n-footernav">Acesse as bibliotecas de outros temas úteis no <strong class="bverse-strong">BiblioVerse</strong>.</span></p>
 <div class="footer-actions">
-<a class="btn linkedin mono" href="https://linkedin.com/in/juliocesarprava/" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+<a class="btn linkedin mono" href="https://www.linkedin.com/company/biblioverse.org" rel="noopener noreferrer" target="_blank">LinkedIn</a>
 <button aria-label="Favoritar" class="btn star mono" id="favBtn" type="button">⭐</button>
 <button class="btn share mono" id="shareBtn" type="button"><span class="i18n-share">Compartilhar</span></button>
 <a class="btn bverse mono" href="https://biblioverse.org" rel="noopener noreferrer" target="_blank">BiblioVerse</a>
@@ -119,7 +97,7 @@
   },
   {
     "category": "Altruísmo e petições",
-    "name": "Effictive Altruism",
+    "name": "Effective Altruism",
     "url": "https://forum.effectivealtruism.org/",
     "description": "",
     "tags": []
@@ -590,6 +568,13 @@
     "tags": []
   },
   {
+    "category": "Buscadores",
+    "name": "Perplexity",
+    "url": "https://www.perplexity.ai/",
+    "description": "",
+    "tags": []
+  },
+  {
     "category": "Ciência e pesquisa",
     "name": "Academia.edu",
     "url": "https://academia.edu/",
@@ -784,7 +769,7 @@
   {
     "category": "Clubes de assinatura e Crowdfunding",
     "name": "Steady",
-    "url": "https://steadyhq.com/",
+    "url": "https://steady.page/",
     "description": "",
     "tags": []
   },
@@ -1076,6 +1061,13 @@
     "tags": []
   },
   {
+    "category": "Encontros e eventos",
+    "name": "Sympla",
+    "url": "https://www.sympla.com.br/",
+    "description": "",
+    "tags": []
+  },
+  {
     "category": "Esportes e atividades físicas",
     "name": "Endomondo",
     "url": "https://en.wikipedia.org/wiki/Endomondo",
@@ -1086,16 +1078,18 @@
   {
     "category": "Esportes e atividades físicas",
     "name": "Fancred",
-    "url": "https://fancred.com/",
+    "url": "https://web.archive.org/web/2016/https://fancred.com/",
     "description": "",
-    "tags": []
+    "tags": [],
+    "ended": true
   },
   {
     "category": "Esportes e atividades físicas",
     "name": "Futeboxd",
-    "url": "https://futeboxd.com/",
+    "url": "https://web.archive.org/web/2024/https://futeboxd.com/",
     "description": "",
-    "tags": []
+    "tags": [],
+    "ended": true
   },
   {
     "category": "Esportes e atividades físicas",
@@ -2086,7 +2080,8 @@
     "name": "AIM",
     "url": "https://en.wikipedia.org/wiki/AIM_(software)",
     "description": "",
-    "tags": []
+    "tags": [],
+    "ended": true
   },
   {
     "category": "Mensagens",
@@ -2113,9 +2108,10 @@
   {
     "category": "Mensagens",
     "name": "ICQ",
-    "url": "https://icq.com/",
+    "url": "https://en.wikipedia.org/wiki/ICQ",
     "description": "",
-    "tags": []
+    "tags": [],
+    "ended": true
   },
   {
     "category": "Mensagens",
@@ -2143,7 +2139,8 @@
     "name": "MSN Messenger",
     "url": "https://en.wikipedia.org/wiki/MSN_Messenger",
     "description": "",
-    "tags": []
+    "tags": [],
+    "ended": true
   },
   {
     "category": "Mensagens",
@@ -2171,7 +2168,8 @@
     "name": "Skype",
     "url": "https://en.wikipedia.org/wiki/Skype",
     "description": "",
-    "tags": []
+    "tags": [],
+    "ended": true
   },
   {
     "category": "Mensagens",
@@ -2223,7 +2221,8 @@
     "name": "Yahoo! Messenger",
     "url": "https://en.wikipedia.org/wiki/Yahoo_Messenger",
     "description": "",
-    "tags": []
+    "tags": [],
+    "ended": true
   },
   {
     "category": "Microblogging",
@@ -2271,7 +2270,7 @@
   {
     "category": "Microblogging",
     "name": "Threads",
-    "url": "https://threads.net/",
+    "url": "https://www.threads.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -2293,7 +2292,7 @@
   {
     "category": "Microblogging",
     "name": "X (Twitter)",
-    "url": "https://twitter.com/",
+    "url": "https://x.com/",
     "description": "",
     "tags": [],
     "featured": true
@@ -2490,7 +2489,7 @@
   {
     "category": "Navegadores web",
     "name": "Mozilla Firefox",
-    "url": "https://mozilla.org/firefox/",
+    "url": "https://www.firefox.com/",
     "description": "",
     "tags": []
   },
@@ -2563,21 +2562,21 @@
   {
     "category": "Navegadores web",
     "name": "Konqueror",
-    "url": "https://en.wikipedia.org/wiki/Konqueror",
+    "url": "https://apps.kde.org/konqueror/",
     "description": "",
     "tags": []
   },
   {
     "category": "Navegadores web",
     "name": "SeaMonkey",
-    "url": "https://en.wikipedia.org/wiki/SeaMonkey",
+    "url": "https://www.seamonkey-project.org/",
     "description": "",
     "tags": []
   },
   {
     "category": "Navegadores web",
     "name": "Midori",
-    "url": "https://en.wikipedia.org/wiki/Midori_(web_browser)",
+    "url": "https://astian.org/midori-browser/",
     "description": "",
     "tags": []
   },
@@ -2600,28 +2599,35 @@
   {
     "category": "Navegadores web",
     "name": "Maxthon",
-    "url": "https://en.wikipedia.org/wiki/Maxthon",
+    "url": "https://www.maxthon.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Navegadores web",
     "name": "UC Browser",
-    "url": "https://en.wikipedia.org/wiki/UC_Browser",
+    "url": "https://www.ucweb.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Navegadores web",
     "name": "Yandex Browser",
-    "url": "https://en.wikipedia.org/wiki/Yandex_Browser",
+    "url": "https://browser.yandex.com/",
     "description": "",
     "tags": []
   },
   {
     "category": "Navegadores web",
     "name": "Pale Moon",
-    "url": "https://en.wikipedia.org/wiki/Pale_Moon_(web_browser)",
+    "url": "https://www.palemoon.org/",
+    "description": "",
+    "tags": []
+  },
+  {
+    "category": "Navegadores web",
+    "name": "Samsung Internet",
+    "url": "https://www.samsung.com/us/support/owners/app/samsung-internet",
     "description": "",
     "tags": []
   },
@@ -2774,7 +2780,8 @@
     "name": "Yahoo! Answers",
     "url": "https://en.wikipedia.org/wiki/Yahoo_Answers",
     "description": "",
-    "tags": []
+    "tags": [],
+    "ended": true
   },
   {
     "category": "Perguntas pessoais",
@@ -3513,7 +3520,7 @@
   {
     "category": "Wikis",
     "name": "Wikipedia",
-    "url": "https://wikipedia.org/",
+    "url": "https://www.wikipedia.org/",
     "description": "",
     "tags": [],
     "featured": true
